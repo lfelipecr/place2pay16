@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="payment_transaction_form_place2pay" model="ir.ui.view">
+			<field name="name">payment.transaction.form.place2pay</field>
+			<field name="model">payment.transaction</field>
+			<field name="inherit_id" ref="payment.payment_transaction_form" />
+			<field name="arch" type="xml">
+				<field name="state_message" position="after">
+					<div class="clearfix">
+						<notebook attrs="{'invisible': [('p2p_request_id','=',False)]}">
+							<page string="PLACETOPAY" name="placetopay">
+								<group>							
+									<field name="p2p_reference" readonly="1"/>
+									<field name="p2p_request_id" readonly="1"/>         
+									<field name="p2p_payment_method" readonly="1"/> 
+									<field name="p2p_internal_transactions" readonly="1"/> 								
+								</group>
+							</page>
+						</notebook>
+					</div>
+				</field>				
+			</field>
+		</record>
+	</data>
+</odoo>

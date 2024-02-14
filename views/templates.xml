@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <template id="assets_front_end" inherit_id="website.assets_frontend">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/place2pay/static/src/js/place2pay.js"></script>
+                <link rel="stylesheet" href="/place2pay/static/src/css/place2pay.css"/>
+            </xpath>
+        </template>
+        <template id="assets_back_end" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/place2pay/static/src/css/place2pay.css"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

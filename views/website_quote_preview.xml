@@ -1,0 +1,41 @@
+<odoo>
+    <template id="sale_order_portal_content_inherit" name="Payment Place to Pay in Preview"
+              inherit_id="sale.sale_order_portal_content">
+        <xpath expr="//div/div" position="after">
+            <t t-set="_transaction" t-value="sale_order.get_portal_last_transaction()"/>
+            <div class="container" t-if="_transaction">
+                <div class="row">
+                    <div t-if="_transaction.p2p_reference" class="col-4">
+                        <strong>Transacción</strong>
+                        <p class="m-0" t-field="_transaction.reference"/>
+                    </div>
+
+                    <div t-if="_transaction.p2p_reference" class="col-4">
+                        <strong>Referencia</strong>
+                        <p class="m-0" t-field="_transaction.p2p_reference"/>
+                    </div>
+
+                    <div t-if="_transaction.p2p_payment_method" class="col-4">
+                        <strong>Método</strong>
+                        <p class="m-0" t-field="_transaction.p2p_payment_method"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div t-if="_transaction.p2p_internal_transactions" class="col-6">
+                        <strong>Recipientes</strong>
+                        <p class="m-0" t-field="_transaction.p2p_internal_transactions"/>
+                    </div>
+                    <div t-if="_transaction.state_message" class="col-4">
+                        <strong>Notificación</strong>
+                        <p class="m-0" t-field="_transaction.state_message"/>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="." position="inside">
+            <div class="col-12">
+                    <p class="m-0">Si tiene consultas sobre el pedido puede comunicarse a <strong t-field="sale_order.company_id.email"/> o al teléfono <strong t-field="sale_order.company_id.phone"/></p>
+            </div>
+        </xpath>
+    </template>
+</odoo>

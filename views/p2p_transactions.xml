@@ -1,0 +1,90 @@
+<odoo>
+  <data>
+    <record id="tree_place2pay_transactions" model="ir.ui.view">
+		<field name="name">p2p.transactions.tree.view</field>
+		<field name="model">p2p.transactions</field>
+		<field name="arch" type="xml">
+			<tree create="false" edit="false" default_order="date desc">					
+				<field name="reference"/>
+				<field name="p2p_reference"/>
+				<field name="date"/>		
+				<field name="amount"/>	
+				<field name="currency_id"/>
+				<field name="partner_name"/>		
+				<field name="acquirer_name"/>	
+				<field name="state"/>					
+			</tree>
+		</field>
+	</record>
+
+	<record id="action_place2pay_transactions" model="ir.actions.act_window">
+		<field name="name">Transacciones PlaceToPay</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">p2p.transactions</field>
+		<field name="view_mode">tree,form</field>
+		<field name="domain">[('provider', '=', 'place2pay')]</field>
+    </record>
+
+	<record id="form_placetopay_transaction" model="ir.ui.view">
+		<field name="name">Transacciones PlaceToPay</field>
+		<field name="model">p2p.transactions</field>
+		<field name="arch" type="xml">						
+			<form create="false" edit="false" delete="false">		
+				<group colspan="2">					
+					<group>
+						<h2>PlacetoPay</h2>
+						<field name="acquirer_id"/>	
+						<field name="p2p_request_id"/>	
+						<field name="p2p_payment_method"/>
+						<field name="state_message"/>
+					</group>
+					<group>
+						<h2>General</h2>
+						<field name="reference"/>
+						<field name="p2p_reference"/>
+						<field name="partner_name"/>
+						<field name="date"/>
+						<field name="amount"/>
+						<field name="currency_id"/>
+						<field name="state"/>
+					</group>
+				</group>	
+			</form>			
+		</field>
+    </record>        	
+	
+	<record id="kanban_placetopay_transaction" model="ir.ui.view" >
+            <field name="name">Transacciones PlaceToPay</field>
+            <field name="model">p2p.transactions</field>
+            <field name="arch" type="xml">
+                <kanban version="7.0">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
+                                <div class="oe_kanban_details">
+                                    <h4>
+                                        <a type="open"><field name="reference"/></a>
+                                    </h4>
+                                    <ul>
+                                        <li>
+                                            <i class="fa fa-user"></i>   <field name="partner_name"></field>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-bookmark"></i>   <field name="state"></field>
+                                        </li>
+										<li>
+                                            <i class="fa fa-calendar"></i>   <field name="date"></field>
+                                        </li>		
+										<li>
+                                            <i class="fa fa-money"></i>   <field name="acquirer_name"></field>
+                                        </li>									
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>	
+  </data>
+</odoo>

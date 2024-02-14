@@ -1,0 +1,20 @@
+.payu-response-row label 
+{
+    text-align: left;
+    font-weight: bold;
+}
+
+.payu-response-row
+{
+    padding-top: 10px;
+    border-bottom: 1px dashed #ddd;
+}
+
+.div_vat #identification_id
+{margin-bottom: 10px;}
+
+div.div_name
+{display: none;}
+
+.div_neighborhood_id_fe
+{display: none;}

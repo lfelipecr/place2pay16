@@ -1,0 +1,2 @@
+"id","name","model_id","group_id","perm_read","perm_write","perm_create","perm_unlink","active"
+"__export__.ir_model_access_568_93b1d607","place2pay TRANSACTIONS","PlaceToPay Transactions","","True","True","True","True","True"

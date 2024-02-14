@@ -1,0 +1,120 @@
+// PAYLOAD REQUEST
+{
+    'auth': {
+        'login': '373e8808b3b0718df31679a6c4a2c2c9',
+        'tranKey': "b'0H7vZoyI+8YdWvqTa++h0EGPvAk='",
+        'nonce': "b'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=='",
+        'seed': '2020-12-07T16: 19: 21-04: 00'
+    },
+    'buyer': {
+        'name': 'Administrator',
+        'surname': 'ODOO',
+        'email': 'admin@example.com',
+        'document': '20364368594',
+        'documentType': 'CRCPF',
+        'mobile': '+573128097090'
+    },
+    'payment': {
+        'reference': 'S00002',
+        'description': 'ODOO-#2-S00002',
+        'amount': {
+            'currency': 'CRC',
+            'total': 9.04
+        },
+        'allowPartial': False
+    },
+    'locale': 'es_CR',
+    'expiration': '2020-12-09T16: 19: 21-05: 00',
+    'returnUrl': 'http: //bigcloud.microdoo.co/place2pay/process_payment',
+    'ipAddress': '181.158.191.39',
+    'userAgent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36'
+}
+
+// PAYLOAD RESPONSE
+{
+    "requestId":435386,
+    "status":{
+       "status":"APPROVED",
+       "reason":"00",
+       "message":"La petición ha sido aprobada exitosamente",
+       "date":"2020-12-08T16:06:49-05:00"
+    },
+    "request":{
+       "locale":"es_CR",
+       "buyer":{
+          "document":"101122334",
+          "documentType":"CRCPF",
+          "name":"Administrator",
+          "surname":"ODOO",
+          "email":"admin@example.com",
+          "mobile":"+573128097090"
+       },
+       "payer":{
+          "document":"101122334",
+          "documentType":"CRCPF",
+          "name":"Administrator",
+          "surname":"ODOO",
+          "email":"admin@example.com",
+          "mobile":"+573128097090"
+       },
+       "payment":{
+          "reference":"S00004",
+          "description":"PEDIDO -#4-S00004",
+          "amount":{
+             "currency":"CRC",
+             "total":9.04
+          },
+          "allowPartial":False,
+          "subscribe":False
+       },
+       "fields":[
+          {
+             "keyword":"_processUrl_",
+             "value":"https://test.placetopay.com/redirection/session/435386/61d807ad5f77272967fd5b5a94fef93c",
+             "displayOn":"none"
+          }
+       ],
+       "returnUrl":"http://bigcloud.microdoo.co/place2pay/process_payment",
+       "ipAddress":"181.158.191.39",
+       "userAgent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36",
+       "expiration":"2020-12-10T20:02:37-00:00"
+    },
+    "payment":[
+       {
+          "status":{
+             "status":"APPROVED",
+             "reason":"00",
+             "message":"Aprobada",
+             "date":"2020-12-08T15:02:49-05:00"
+          },
+          "internalReference":1499500707,
+          "paymentMethod":"visa",
+          "paymentMethodName":"Visa",
+          "issuerName":"JPMORGAN CHASE BANK, N.A.",
+          "amount":{
+             "from":{
+                "currency":"CRC",
+                "total":9.04
+             },
+             "to":{
+                "currency":"CRC",
+                "total":9.04
+             },
+             "factor":1
+          },
+          "authorization":"482321",
+          "reference":"S00004",
+          "receipt":"723343722102",
+          "franchise":"TS_VS",
+          "refunded":False,
+          "processorFields":[
+             {
+                "keyword":"lastDigits",
+                "value":"****1111",
+                "displayOn":"none"
+             }
+          ]
+       }
+    ],
+    "subscription":"None"
+ }

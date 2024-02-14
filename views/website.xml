@@ -1,0 +1,112 @@
+<odoo>
+    <data>
+
+        <template id="address_b2b" inherit_id="website_sale.address">
+            <xpath expr="//input[@name='vat']" position="before">
+                <t>
+                    <select  name="identification_id" id="identification_id" t-attf-class="form-control #{error.get('identification_id') and 'is-invalid' or ''}" t-att-readonly="'1' if 'vat' in checkout and checkout['vat'] and not can_edit_vat else None">
+                    </select>                
+                </t>
+            </xpath>
+
+            <xpath expr="//form[hasclass('checkout_autoformat')]/div[hasclass('row')]/div[1]" position="before">
+
+                <t>
+                    <div class="form-group  div_firstname_fe col-lg-6 ">
+                        <label class="col-form-label" for="firstname">Nombre</label>
+                        <input type="text" name="firstname" t-attf-class="form-control #{error.get('firstname') and 'is-invalid' or ''}" t-att-value="'firstname' in checkout and checkout['firstname']"/>
+                    </div> 
+                </t>
+
+                <t>
+                    <div class="form-group  div_lastname_fe col-lg-6 ">
+                        <label class="col-form-label" for="lastname">Apellido</label>
+                        <input type="text" name="lastname" t-attf-class="form-control #{error.get('lastname') and 'is-invalid' or ''}" t-att-value="'lastname' in checkout and checkout['lastname']"/>
+                    </div>
+                </t>
+                
+            </xpath>
+
+            <xpath expr="//form[hasclass('checkout_autoformat')]/div[hasclass('row')]/div[last()]" position="after">
+
+                <t>
+                    <div class="form-group  div_county_id_fe col-lg-6 ">
+                        <label class="col-form-label" for="county_id">Cánton</label>
+                        <select name="county_id" class="form-control "/>
+                    </div>  
+                </t>
+
+                <t>
+                    <div class="form-group  div_district_id_fe col-lg-6 ">
+                        <label class="col-form-label" for="district_id">Distrito</label>
+                        <select name="district_id" class="form-control "/>
+                    </div>  
+                </t>
+
+                <t>
+                    <div class="form-group  div_neighborhood_id_fe col-lg-6">
+                        <label class="col-form-label" for="neighborhood_id">Vecindario</label>
+                        <select name="neighborhood_id" class="form-control "/>
+                    </div>  
+                </t>
+
+            </xpath>
+
+            <xpath expr="//label[@for='street']" position="replace">
+
+                <t>
+                    <label class="col-form-label" for="street">Dirección Exacta</label>
+                </t>
+
+            </xpath>
+
+            <xpath expr="//input[@name='field_required']" position="replace">
+
+                <t>
+                    <input type="hidden" name="field_required" t-att-value="'phone,name,firstname,lastname'" />
+                </t>
+
+            </xpath>
+        </template>
+
+        <template id="website_sale_confirmation_inherit" inherit_id="website_sale.confirmation">
+            <xpath expr="//div[1]/div[2]" position="before">
+                <div class="mt-3 card">
+                  <div class="card-body">                    
+
+                    <div t-if="order.get_portal_last_transaction().p2p_reference" class="col">
+                        <label>Referencia N°: </label>
+                        <t t-esc="order.get_portal_last_transaction().p2p_reference"/>
+                    </div>
+
+                    <div t-if="order.get_portal_last_transaction().p2p_payment_method" class="col">
+                        <label>Método: </label>
+                        <t t-esc="order.get_portal_last_transaction().p2p_payment_method"/>
+                    </div> 
+
+                    <div t-if="order.get_portal_last_transaction().p2p_internal_transactions" class="col">
+                        <label>Transacciones: </label>
+                        <t t-raw="order.get_portal_last_transaction().p2p_internal_transactions" />
+                    </div>  
+                    
+                  </div>
+                </div>
+            </xpath>
+        </template>
+
+        <function model="ir.model.fields" name="formbuilder_whitelist">
+
+            <value>res.partner</value>
+            <value eval="[
+                            'identification_id',
+                            'firstname',
+                            'lastname',
+                            'county_id',
+                            'district_id',
+                            'neighborhood_id'
+                         ]"/>
+
+        </function>        
+
+   </data>
+</odoo>

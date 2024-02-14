@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>	
+        <record id="action_place2pay_transactions" model="ir.actions.act_window">
+            <field name="name">Transacciones PlaceToPay</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">p2p.transactions</field>
+            
+            <field name="view_mode">kanban,tree,form,graph</field>
+            <field name="context">{"search_default_fieldname":1}</field>
+            <field name="help" type="html">
+                <p class="oe_vi ew_nocontent_create">
+                Click to add a new Transaction
+                </p><p>
+                Click the Create button to add a new Transaction
+                </p>
+            </field>
+        </record>
+        <menuitem id="menu_place2pay_transactions" name="Placetopay" parent="website_sale.menu_ecommerce_payment_transactions" action="action_place2pay_transactions" sequence="1"/>
+    </data>
+</odoo>
